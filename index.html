@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Pocket NFL Rush</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-label">Pocket NFL</span>
+          <span class="brand-sub">Rush</span>
+        </div>
+        <div class="clock-wrap">
+          <span class="clock-label">Q4</span>
+          <strong id="timer">01:30</strong>
+        </div>
+      </header>
+
+      <section class="scoreboard">
+        <div class="team-box you">
+          <span class="team-name">YOU</span>
+          <strong id="yourScore">0</strong>
+        </div>
+        <div class="score-divider">:</div>
+        <div class="team-box cpu">
+          <span class="team-name">CPU</span>
+          <strong id="cpuScore">0</strong>
+        </div>
+      </section>
+
+      <section class="field-panel">
+        <canvas id="fieldCanvas" width="390" height="540" aria-label="Football field"></canvas>
+      </section>
+
+      <section class="status-panel">
+        <div class="status-header">
+          <span id="possessionBadge" class="possession-badge you">OFFENSE</span>
+          <span id="downInfo">1st & 10</span>
+        </div>
+        <p id="statusText">Choose a play to start the drive.</p>
+      </section>
+
+      <section class="controls">
+        <button class="play-btn run" data-action="run">Run</button>
+        <button class="play-btn pass" data-action="pass">Pass</button>
+        <button class="play-btn defend" data-action="defend">Defend</button>
+      </section>
+
+      <button id="resetBtn" class="reset-btn">New Game</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

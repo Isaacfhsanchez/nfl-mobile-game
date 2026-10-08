@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #0a1220;
+  --panel: rgba(11, 26, 40, 0.82);
+  --panel-alt: rgba(18, 38, 54, 0.9);
+  --green-1: #10a361;
+  --green-2: #0f8f54;
+  --green-3: #0d7345;
+  --line: rgba(255, 255, 255, 0.25);
+  --text: #edf6ff;
+  --muted: #b9c9d8;
+  --gold: #f5c451;
+  --blue: #3a68ff;
+  --red: #ff4d4d;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+html, body {
+  height: 100%;
+  background:
+    radial-gradient(circle at top, #12263b 0%, #091725 40%, #050c14 100%);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+}
+
+.app-shell {
+  width: min(100%, 440px);
+  min-height: 880px;
+  padding: 18px 16px 20px;
+  border-radius: 28px;
+  background: rgba(8, 17, 26, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 28px 60px var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.brand-sub {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.clock-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.clock-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+#timer {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 12px;
+}
+
+.team-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.team-box.you {
+  border: 1px solid rgba(58, 104, 255, 0.5);
+}
+
+.team-box.cpu {
+  border: 1px solid rgba(255, 77, 77, 0.5);
+}
+
+.team-name {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  opacity: 0.9;
+}
+
+.team-box strong {
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.score-divider {
+  font-size: 1.6rem;
+  font-weight: 900;
+  opacity: 0.7;
+}
+
+.field-panel {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 -18px 32px rgba(0, 0, 0, 0.18);
+}
+
+#fieldCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, var(--green-1) 0%, var(--green-2) 100%);
+}
+
+.status-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+  margin-top: 14px;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.possession-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.possession-badge.you {
+  background: rgba(58, 104, 255, 0.18);
+  color: #c6d4ff;
+}
+
+.possession-badge.cpu {
+  background: rgba(255, 77, 77, 0.18);
+  color: #ffc7c7;
+}
+
+#downInfo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+#statusText {
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  min-height: 44px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.play-btn {
+  appearance: none;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 8px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.18);
+}
+
+.play-btn:active {
+  transform: translateY(2px) scale(0.995);
+}
+
+.play-btn.run {
+  background: linear-gradient(180deg, #1f8fff 0%, #0e6fec 100%);
+}
+
+.play-btn.pass {
+  background: linear-gradient(180deg, #23b26d 0%, #178a54 100%);
+}
+
+.play-btn.defend {
+  background: linear-gradient(180deg, #ff8a3d 0%, #f45d2e 100%);
+}
+
+.reset-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 12px;
+  }
+
+  .app-shell {
+    min-height: 100%;
+    border-radius: 22px;
+    padding-bottom: 18px;
+  }
+}
