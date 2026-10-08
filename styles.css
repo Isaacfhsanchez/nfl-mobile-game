@@ -6,25 +6,25 @@
 }
 
 :root {
-  --bg: #0a1220;
-  --panel: rgba(11, 26, 40, 0.82);
-  --panel-alt: rgba(18, 38, 54, 0.9);
-  --green-1: #10a361;
-  --green-2: #0f8f54;
-  --green-3: #0d7345;
-  --line: rgba(255, 255, 255, 0.25);
-  --text: #edf6ff;
-  --muted: #b9c9d8;
-  --gold: #f5c451;
-  --blue: #3a68ff;
-  --red: #ff4d4d;
-  --shadow: rgba(0, 0, 0, 0.3);
+  --bg: #07141f;
+  --panel: rgba(12, 25, 38, 0.82);
+  --panel-alt: rgba(18, 37, 52, 0.9);
+  --green-1: #1dbb6d;
+  --green-2: #149a5c;
+  --green-3: #0d7549;
+  --line: rgba(255, 255, 255, 0.18);
+  --text: #edf7ff;
+  --muted: #b7cad8;
+  --gold: #ffd45c;
+  --blue: #3d77ff;
+  --red: #ff5a5a;
+  --shadow: rgba(0, 0, 0, 0.32);
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  background:
-    radial-gradient(circle at top, #12263b 0%, #091725 40%, #050c14 100%);
+  background: radial-gradient(circle at top, #18375f 0%, #0d1c2d 35%, #050d14 100%);
   color: var(--text);
   font-family: Inter, "Segoe UI", sans-serif;
 }
@@ -33,18 +33,128 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px;
+  padding: 16px;
+}
+
+button {
+  font: inherit;
 }
 
 .app-shell {
-  width: min(100%, 440px);
-  min-height: 880px;
-  padding: 18px 16px 20px;
+  width: min(100%, 420px);
+  min-height: 860px;
   border-radius: 28px;
-  background: rgba(8, 17, 26, 0.82);
+  background: rgba(8, 18, 26, 0.76);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 28px 60px var(--shadow);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.screen {
+  display: none;
+  min-height: 860px;
+  padding: 18px 16px 22px;
+}
+
+.screen.active {
+  display: block;
+}
+
+.screen-header {
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.screen-header h1 {
+  font-size: clamp(2rem, 7vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.team-card {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.team-card:hover,
+.team-card:active {
+  transform: translateY(-1px);
+}
+
+.team-card.selected {
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+.team-mark {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.team-name {
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.team-record {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.primary-btn,
+.reset-btn,
+.play-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.primary-btn {
+  width: 100%;
+  border-radius: 16px;
+  padding: 18px 16px;
+  font-weight: 800;
+  font-size: 1.02rem;
+  background: linear-gradient(180deg, #3d77ff 0%, #2359d7 100%);
+  box-shadow: 0 14px 28px rgba(61, 119, 255, 0.35);
 }
 
 .topbar {
@@ -68,7 +178,7 @@ body {
 }
 
 .brand-sub {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 0.04em;
 }
@@ -90,7 +200,7 @@ body {
 }
 
 #timer {
-  font-size: 1.3rem;
+  font-size: 1.38rem;
   font-weight: 800;
 }
 
@@ -116,22 +226,22 @@ body {
 }
 
 .team-box.you {
-  border: 1px solid rgba(58, 104, 255, 0.5);
+  border: 1px solid rgba(61, 119, 255, 0.45);
 }
 
 .team-box.cpu {
-  border: 1px solid rgba(255, 77, 77, 0.5);
+  border: 1px solid rgba(255, 90, 90, 0.5);
+}
+
+.team-box strong {
+  font-size: 2.1rem;
+  line-height: 1;
 }
 
 .team-name {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   opacity: 0.9;
-}
-
-.team-box strong {
-  font-size: 2.1rem;
-  line-height: 1;
 }
 
 .score-divider {
@@ -144,7 +254,7 @@ body {
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 -18px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 -18px 32px rgba(0, 0, 0, 0.15);
 }
 
 #fieldCanvas {
@@ -183,13 +293,13 @@ body {
 }
 
 .possession-badge.you {
-  background: rgba(58, 104, 255, 0.18);
-  color: #c6d4ff;
+  background: rgba(61, 119, 255, 0.18);
+  color: #ccd9ff;
 }
 
 .possession-badge.cpu {
-  background: rgba(255, 77, 77, 0.18);
-  color: #ffc7c7;
+  background: rgba(255, 90, 90, 0.18);
+  color: #ffd0d0;
 }
 
 #downInfo {
@@ -213,17 +323,13 @@ body {
 }
 
 .play-btn {
-  appearance: none;
-  border: none;
   border-radius: 16px;
   padding: 16px 8px;
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.12s ease, filter 0.12s ease;
 }
 
 .play-btn:active {
@@ -231,28 +337,25 @@ body {
 }
 
 .play-btn.run {
-  background: linear-gradient(180deg, #1f8fff 0%, #0e6fec 100%);
+  background: linear-gradient(180deg, #2f88ff 0%, #1d6de7 100%);
 }
 
 .play-btn.pass {
-  background: linear-gradient(180deg, #23b26d 0%, #178a54 100%);
+  background: linear-gradient(180deg, #2ec77a 0%, #1a9e62 100%);
 }
 
 .play-btn.defend {
-  background: linear-gradient(180deg, #ff8a3d 0%, #f45d2e 100%);
+  background: linear-gradient(180deg, #ff9d3d 0%, #f36934 100%);
 }
 
 .reset-btn {
   width: 100%;
   margin-top: 18px;
   padding: 14px 18px;
-  border: none;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
   font-size: 0.98rem;
   font-weight: 700;
-  cursor: pointer;
 }
 
 @media (max-width: 420px) {
@@ -260,9 +363,9 @@ body {
     padding: 12px;
   }
 
-  .app-shell {
+  .app-shell,
+  .screen {
     min-height: 100%;
     border-radius: 22px;
-    padding-bottom: 18px;
   }
 }

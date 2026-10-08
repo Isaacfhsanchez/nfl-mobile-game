@@ -8,48 +8,61 @@
   </head>
   <body>
     <div class="app-shell">
-      <header class="topbar">
-        <div class="brand-block">
-          <span class="brand-label">Pocket NFL</span>
-          <span class="brand-sub">Rush</span>
+      <div id="teamScreen" class="screen active">
+        <div class="screen-header">
+          <span class="eyebrow">Pocket NFL</span>
+          <h1>Choose your team</h1>
         </div>
-        <div class="clock-wrap">
-          <span class="clock-label">Q4</span>
-          <strong id="timer">01:30</strong>
-        </div>
-      </header>
 
-      <section class="scoreboard">
-        <div class="team-box you">
-          <span class="team-name">YOU</span>
-          <strong id="yourScore">0</strong>
-        </div>
-        <div class="score-divider">:</div>
-        <div class="team-box cpu">
-          <span class="team-name">CPU</span>
-          <strong id="cpuScore">0</strong>
-        </div>
-      </section>
+        <div id="teamGrid" class="team-grid" aria-label="Select team"></div>
 
-      <section class="field-panel">
-        <canvas id="fieldCanvas" width="390" height="540" aria-label="Football field"></canvas>
-      </section>
+        <button id="startGameBtn" class="primary-btn">Start Game</button>
+      </div>
 
-      <section class="status-panel">
-        <div class="status-header">
-          <span id="possessionBadge" class="possession-badge you">OFFENSE</span>
-          <span id="downInfo">1st & 10</span>
-        </div>
-        <p id="statusText">Choose a play to start the drive.</p>
-      </section>
+      <div id="gameScreen" class="screen">
+        <header class="topbar">
+          <div class="brand-block">
+            <span class="brand-label">Pocket NFL</span>
+            <span id="selectedTeamLabel" class="brand-sub">Chiefs</span>
+          </div>
+          <div class="clock-wrap">
+            <span class="clock-label">Q4</span>
+            <strong id="timer">02:00</strong>
+          </div>
+        </header>
 
-      <section class="controls">
-        <button class="play-btn run" data-action="run">Run</button>
-        <button class="play-btn pass" data-action="pass">Pass</button>
-        <button class="play-btn defend" data-action="defend">Defend</button>
-      </section>
+        <section class="scoreboard">
+          <div class="team-box you">
+            <span class="team-name" id="yourTeamLabel">YOU</span>
+            <strong id="yourScore">0</strong>
+          </div>
+          <div class="score-divider">:</div>
+          <div class="team-box cpu">
+            <span class="team-name">CPU</span>
+            <strong id="cpuScore">0</strong>
+          </div>
+        </section>
 
-      <button id="resetBtn" class="reset-btn">New Game</button>
+        <section class="field-panel">
+          <canvas id="fieldCanvas" width="390" height="540" aria-label="Football field"></canvas>
+        </section>
+
+        <section class="status-panel">
+          <div class="status-header">
+            <span id="possessionBadge" class="possession-badge you">OFFENSE</span>
+            <span id="downInfo">1st & 10</span>
+          </div>
+          <p id="statusText">Choose a play to start the drive.</p>
+        </section>
+
+        <section class="controls">
+          <button class="play-btn run" data-action="run">Run</button>
+          <button class="play-btn pass" data-action="pass">Pass</button>
+          <button class="play-btn defend" data-action="defend">Defend</button>
+        </section>
+
+        <button id="resetBtn" class="reset-btn">Back to Teams</button>
+      </div>
     </div>
 
     <script src="app.js"></script>
